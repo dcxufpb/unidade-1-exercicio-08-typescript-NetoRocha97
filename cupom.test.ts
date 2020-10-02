@@ -93,7 +93,8 @@ Bai 1 - Mun 1 - E1
 CEP:11111-111 Tel (11) 1111-1111
 Obs 1
 CNPJ: 11.111.111/1111-11
-IE: 123456789`
+IE: 123456789
+`;
 
 const TEXTO_ESPERADO_SEM_NUMERO_SEM_COMPLEMENTO_SEM_BAIRRO: string = `Loja 1
 Log 1, s/n
@@ -101,8 +102,17 @@ Mun 1 - E1
 CEP:11111-111 Tel (11) 1111-1111
 Obs 1
 CNPJ: 11.111.111/1111-11
-IE: 123456789`
+IE: 123456789
+`;
 
+const TEXTO_ESPERADO_EXERCICIO2_CUSTOMIZADO : string = `Loja CRVG
+R. Gen. Almério de Moura, 131 Estádio
+São Januário - Rio de Janeiro - RJ
+CEP:20921-060 Tel (21) 91898-1927
+Obs 1
+CNPJ: 12.111.333/12133-12
+IE: 123.456.789.000
+`;
 
 test('Loja Completa', () => {
   let lojaCompleta: Loja = new Loja(NOME_LOJA, LOGRADOURO, NUMERO, COMPLEMENTO,
@@ -220,25 +230,23 @@ test('Número zero, complemento e bairro vazios', () => {
 test('Exercício 2 - customizado', () => {
 
   // Defina seus próprios valores para as variáveis a seguir
-  let nome_loja = "";
-  let logradouro = "";
-  let numero = 0;
-  let complemento = "";
-  let bairro = "";
-  let municipio = "";
-  let estado = "";
-  let cep = "";
-  let telefone = "";
-  let observacao = "";
-  let cnpj = "";
-  let inscricao_estadual = "";
+  let nome_loja = "Loja CRVG";
+  let logradouro = "R. Gen. Almério de Moura";
+  let numero = 131;
+  let complemento = "Estádio";
+  let bairro = "São Januário";
+  let municipio = "Rio de Janeiro";
+  let estado = "RJ";
+  let cep = "20921-060";
+  let telefone = "(21) 91898-1927";
+  let observacao = "Obs 1";
+  let cnpj = "12.111.333/12133-12";
+  let inscricao_estadual = "123.456.789.000";
 
   let loja_customizada: Loja = new Loja(nome_loja, logradouro, numero,
     complemento, bairro, municipio, estado, cep, telefone, observacao, cnpj,
     inscricao_estadual);
 
   //E atualize o texto esperado abaixo
-  expect(dados_loja_objeto(loja_customizada)).toBe(
-      `
-`);
+  expect(dados_loja_objeto(loja_customizada)).toBe(TEXTO_ESPERADO_EXERCICIO2_CUSTOMIZADO);
 });
